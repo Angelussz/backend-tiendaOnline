@@ -1,5 +1,5 @@
 const UserController = require("../controllers/UserController");
-
+const Auth = require("../utils/AuthMiddlewares");
 const UserRoutes = (base, app) => {
   const controller = new UserController();
   app.post(`${base}/create-admin`, async (req, res, next) => {
@@ -15,7 +15,7 @@ const UserRoutes = (base, app) => {
         .json({ mesage: "Ocurrio un error al intentar crear usuario" });
     }
   });
-  app.post(`${base}`, async (req, res, next) => {
+  app.post(`${base}`,Auth.isAuth,Auth.isAdmin, async (req, res, next) => {
     try {
       const { email, password} = req.body;
       const response = await controller.CreateNewUser(email, password);
