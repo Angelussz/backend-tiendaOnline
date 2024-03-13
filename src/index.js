@@ -2,8 +2,10 @@ const express  = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 const path = require("path")
+const databaseConnection = require('./databaseConnection.js')
+const UserRoutes = require("./routes/UserRoutes.js")
 require('dotenv').config();
-
+databaseConnection()
 const app = express();
 // console.log(process.env)
 
@@ -48,3 +50,5 @@ app.get("/test", async(req,res,next) =>{
         next(error)
     }
 })
+
+UserRoutes("/users",app)
