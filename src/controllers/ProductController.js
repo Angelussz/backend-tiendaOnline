@@ -16,6 +16,14 @@ class ProductController {
       throw error;
     }
   }
+  async GetAllProducts(){
+    try {
+      const products = await ProductModel.find();
+      return products
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = ProductController;
