@@ -53,6 +53,7 @@ class ProductController {
     }
   }
   async UpdateProducto(product){
+    // AQUI TENDRIAMOS QUE APLICAR LAS MISMAS VALIDACIONES QUE EN EL CREATE
     await ProductModel.findByIdAndUpdate(product._id,product)
   }
 }
