@@ -44,6 +44,17 @@ class ProductController {
       throw error;
     }
   }
+  async GetById(id){
+    try {
+      const product = await ProductModel.findById(id);
+      return product
+    } catch (error) {
+      throw error
+    }
+  }
+  async UpdateProducto(product){
+    await ProductModel.findByIdAndUpdate(product._id,product)
+  }
 }
 
 module.exports = ProductController;
