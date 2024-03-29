@@ -56,6 +56,13 @@ class ProductController {
     // AQUI TENDRIAMOS QUE APLICAR LAS MISMAS VALIDACIONES QUE EN EL CREATE
     await ProductModel.findByIdAndUpdate(product._id,product)
   }
+  async DeleteProduct(id){
+    try {
+      await ProductModel.findByIdAndDelete(id);
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 module.exports = ProductController;
